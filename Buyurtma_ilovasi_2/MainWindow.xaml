@@ -1,0 +1,132 @@
+﻿<Window x:Class="Buyurtma_ilovasi_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Buyurtma_ilovasi_2"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="MainWindow" Height="600" Width="1100">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                Background="{DynamicResource FirstColor}"
+                CornerRadius="15 15 0 0"
+                BorderThickness=" 2 0 0 2"
+                BorderBrush="{DynamicResource ThreedColor}">
+        </Border>
+        <Grid Margin ="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+            </Grid.ColumnDefinitions>
+
+            <Border
+                Grid.Column="0"
+                x:Name="borderDragable"
+                MouseDown="borderDragable_MouseDown" 
+                Cursor="ScrollAll"
+                Background="{DynamicResource FirstColor}">
+            </Border>
+            
+            <StackPanel 
+                Grid.Column="1"
+                Orientation="Horizontal">
+                <Button x:Name="btnMinimized" Click="btnMinimize_Click" Style="{DynamicResource MinimizedButton}"/>
+                <Button x:Name="btnMaximize"  Click="btnMaximize_Click" Style="{DynamicResource MaximizedButton}"/>
+                <Button x:Name="btnClose"     Click="btnClose_Click"    Style="{DynamicResource ClosedButton}"/>
+            </StackPanel>
+        </Grid>
+        <Border Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="330"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0"
+                        Background="{DynamicResource FirstColor}"
+                        CornerRadius="0 0 0 15"
+                        BorderThickness="2 0 2 2"
+                        BorderBrush="{DynamicResource ThreedColor}">
+                    
+                    <!--MenuButtons-->
+                    <StackPanel Margin="5 10 0 0">
+                        <RadioButton 
+                            x:Name="rbTaomlar"
+                            Content="Taomlar"
+                            Click="btnTaomlar_Click"
+                            Style="{DynamicResource MenuButton}"
+                            Tag ="{DynamicResource taom}"/>
+                        <RadioButton 
+                            x:Name="rbIchimliklar"
+                            Content="Ichimliklar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource ichimlik}"
+                            Click="btnIchimliklar_Click"/>
+                        <RadioButton 
+                            x:Name="rbSalatlar"
+                            Content="Salatlar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource salat}"
+                            Click="btnSalatlar_Click"/>
+                        <RadioButton 
+                            x:Name="rbShirinliklar"
+                            Content="Shirinliklar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource shirinlik}"
+                            Click="btnShirinliklar_Click"/>
+                        <RadioButton 
+                            x:Name="rbBosh_stollar"
+                            Content="Bo'sh stollar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource stol}"
+                            Click="btnBosh_stollar_Click"/>
+                        <RadioButton 
+                            x:Name="rbOlib_ketish"
+                            Content="Olib ketish"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource olibketish}"
+                            Click="btnOlib_ketish_Click"/>
+                        <RadioButton 
+                            x:Name="rbSozlamalar"
+                            Content="Sozlamalar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource sozlama}"
+                            Click="btnSozlamalar_Click"/>
+
+                    </StackPanel>
+                    <!--MenuButtons-->
+
+
+                </Border>
+
+                <Border Grid.Column="1"
+                        Background="{DynamicResource SecondColor}"
+                        BorderThickness="0 0 1 1"
+                        BorderBrush="{DynamicResource ThreedColor}">
+                   <Frame x:Name="PageNavigator"
+                       NavigationUIVisibility="Hidden"/>
+                </Border>
+                <Border Grid.Column="2"
+                        Background="{DynamicResource FirstColor}"
+                        CornerRadius="0 0 15 0">
+                    <DataGrid
+                        Margin="0 40 0 60" 
+                        Background="Transparent"
+                        BorderThickness="0">
+                        
+                        
+                    </DataGrid>
+                    
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
