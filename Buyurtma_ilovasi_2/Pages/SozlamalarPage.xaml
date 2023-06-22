@@ -5,10 +5,153 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="540" d:DesignWidth="540"
       Title="SozlamalarPage">
 
-    <Grid>
-        
-    </Grid>
+    <Border
+        CornerRadius="10"
+        Margin="10"
+        Background="{DynamicResource FirstColor}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Border
+                Grid.Row="0"
+                Background="{DynamicResource FourthColor}"
+                CornerRadius="10 10 0 0"
+                BorderThickness="0 0 0 3"
+                BorderBrush="{DynamicResource ThreedColor}">
+                <Label Content="Maxsulot qo'shish"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="25"
+                       FontFamily="jetbrains mono"
+                       FontWeight="SemiBold"/>
+
+            </Border>
+            <Grid Grid.Row="1">
+                <Label Content="Maxsulot turini tanlang!" Style="{DynamicResource TitleLabel}"
+                       HorizontalAlignment="Center"
+                       Margin="0"/>
+                <StackPanel
+                    Margin="0 30 0 0"
+                    Orientation="Horizontal">
+                    <RadioButton
+                        Content="Taom"
+                        Style="{DynamicResource RadioButton}"/>
+                    <RadioButton
+                        Content="Ichimliklik"
+                        Style="{DynamicResource RadioButton}"/>
+                    <RadioButton
+                        Content="Salat"
+                        Style="{DynamicResource RadioButton}"/>
+                    <RadioButton
+                        Content="Shirinlik"
+                        Style="{DynamicResource RadioButton}"/>
+
+                </StackPanel>
+
+
+            </Grid>
+            <Grid
+                Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="270"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel
+                    Margin="0 10"
+                    Grid.Column="0"
+                    Orientation="Vertical">
+                    <Label Content="Maxsulot nomi" Style="{DynamicResource TitleLabel}"/>
+                    <Border
+                        CornerRadius="10"
+                        Height="40"
+                        Margin="15 0"
+                        BorderThickness="1"
+                        Background="{DynamicResource SecondColor}"
+                        BorderBrush="{DynamicResource SeventhColor}">
+                        <TextBox
+                            x:Name="tbMaxsulotNomi"
+                            Margin="5 0"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            FontSize="18"/>
+
+                    </Border>
+                    <Label Content="Maxsulot narxi" 
+                           Style="{DynamicResource TitleLabel}"
+                           Margin="15 55"/>
+                    <Border
+                        CornerRadius="10"
+                        Height="40"
+                        Margin="15 -40 15 20"
+                        BorderThickness="1"
+                        Background="{DynamicResource SecondColor}"
+                        BorderBrush="{DynamicResource SeventhColor}">
+                        <TextBox
+                            x:Name="tbMaxsulotNarxi"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            FontSize="18"/>
+
+                    </Border>
+                </StackPanel>
+
+                <StackPanel
+                    Grid.Column="1"
+                    Margin="0 10"
+                    Orientation="Vertical">
+                    <Label Content="Maxsulot rasmi" Style="{DynamicResource TitleLabel}"/>
+                    <Border x:Name="ImgBrushBorder"
+                            Height="180"
+                            Margin="10 0 15 0"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource SeventhColor}"
+                            CornerRadius="10">
+                        <Border.Background>
+                            <ImageBrush x:Name="ImgBrush"/>
+                        </Border.Background>
+                        <Button 
+                            x:Name="btnImgSave"
+                            Height="25"
+                            Width="40"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            Content="****"
+                            BorderThickness="0"
+                            Background="Transparent"
+                            Click="btnImgSave_Click"/>
+                    </Border>
+
+                </StackPanel>
+
+            </Grid>
+
+            <Grid
+                Grid.Row="3">
+                <Button Grid.Row="2"
+                        Style="{DynamicResource SaveButton}" 
+                        Content="Saqlash" Click="Button_Click" 
+                        >
+                    <Button.Effect>
+                        <DropShadowEffect
+                                Direction="290"
+                                ShadowDepth="5">
+                        </DropShadowEffect>
+                    </Button.Effect>
+
+                </Button>
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
 </Page>

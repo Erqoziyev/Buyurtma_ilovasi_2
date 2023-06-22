@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,29 @@ namespace Buyurtma_ilovasi_2.Pages
         public SozlamalarPage()
         {
             InitializeComponent();
+        }
+
+        private void btnImgSave_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = GetImgDialog();
+            if (openFileDialog.ShowDialog() == true)
+            { 
+                string imgPath = openFileDialog.FileName;
+                ImgBrush.ImageSource = new BitmapImage(new Uri(imgPath, UriKind.Relative));
+            }
+
+        }
+        private OpenFileDialog GetImgDialog()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = " Jpg files (*.jpg)|*.jpg  | Jpeg files (*.jpeg)|*.jpeg |Png files (*.png)|*.png";
+            return openFileDialog;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

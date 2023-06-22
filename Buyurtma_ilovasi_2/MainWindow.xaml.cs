@@ -79,8 +79,8 @@ namespace Buyurtma_ilovasi_2
         }
         private void btnSozlamalar_Click(object sender, RoutedEventArgs e)
         {
-            SozlamalarPage sozlamalarPage = new SozlamalarPage();  
-            PageContent content = new PageContent();
+            SozlamalarPage sozlamalarPage = new SozlamalarPage();
+            PageNavigator.Content = sozlamalarPage;
         }
 
         private void btnOlib_ketish_Click(object sender, RoutedEventArgs e)

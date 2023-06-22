@@ -10,7 +10,13 @@
   <ItemGroup>
     <Folder Include="Assets\Images\" />
     <Folder Include="Enums\" />
+    <Folder Include="Security\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Windows\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="7.0.4" />
   </ItemGroup>
 
 </Project>

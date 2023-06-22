@@ -2,5 +2,6 @@
 
 public abstract class BaseEntities
 {
+    public long Id { get; set; }
 
 }
