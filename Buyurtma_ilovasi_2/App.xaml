@@ -18,6 +18,24 @@
                 <ResourceDictionary Source="/Styles/TitleStyle.xaml"/>
 
             </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type DataGridRow}">
+                            <Grid/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="DataGridRowStyle2" TargetType="{x:Type DataGridRow}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type DataGridRow}">
+                            <Grid/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
         
         

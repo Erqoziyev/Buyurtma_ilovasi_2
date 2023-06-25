@@ -6,9 +6,15 @@
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SalatlarPage">
+      Title="SalatlarPage"
+      Loaded="Page_Loaded">
 
     <Grid>
-        
+        <ScrollViewer>
+            <WrapPanel x:Name="wrpProduct"
+                   Margin="10">
+
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

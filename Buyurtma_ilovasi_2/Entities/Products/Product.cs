@@ -9,6 +9,8 @@ public sealed class Product : BaseEntities
 
     public long CatigoryId { get; set; }
 
+    public float Price { get; set; }
+
     public string ImgPath { get; set; } = string.Empty;
 
 }

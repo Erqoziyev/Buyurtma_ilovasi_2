@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Buyurtma_ilovasi_2.Components;
+using Buyurtma_ilovasi_2.Entities.Products;
+using Buyurtma_ilovasi_2.Interface.Products;
+using Buyurtma_ilovasi_2.Repositories.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +24,26 @@ namespace Buyurtma_ilovasi_2.Pages
     /// </summary>
     public partial class TaomlarPage : Page
     {
+        private readonly ProductRepository _productRepository;
         public TaomlarPage()
         {
             InitializeComponent();
+            this._productRepository = new ProductRepository();
+        }
+
+        
+
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var products = await _productRepository.Get("Taom");
+
+            foreach (var product in products)
+            {
+                MealAddUserControl mealAddUserControl = new MealAddUserControl();
+                mealAddUserControl.SetData(product);
+                wrpProduct.Children.Add(mealAddUserControl);
+            }
+
         }
     }
 }

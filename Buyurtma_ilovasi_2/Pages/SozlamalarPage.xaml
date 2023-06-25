@@ -11,7 +11,9 @@
     <Border
         CornerRadius="10"
         Margin="10"
-        Background="{DynamicResource FirstColor}">
+        Background="{DynamicResource FirstColor}"
+        BorderBrush="{DynamicResource SeventhColor}"
+        BorderThickness="1.5">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -23,8 +25,8 @@
                 Grid.Row="0"
                 Background="{DynamicResource FourthColor}"
                 CornerRadius="10 10 0 0"
-                BorderThickness="0 0 0 3"
-                BorderBrush="{DynamicResource ThreedColor}">
+                BorderThickness="0 0 0 2"
+                BorderBrush="{DynamicResource SeventhColor}">
                 <Label Content="Maxsulot qo'shish"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
@@ -41,17 +43,31 @@
                     Margin="0 30 0 0"
                     Orientation="Horizontal">
                     <RadioButton
+                        x:Name="rbTaom"
                         Content="Taom"
+                        Click="btnMaxsulotTuri"
                         Style="{DynamicResource RadioButton}"/>
                     <RadioButton
-                        Content="Ichimliklik"
+                        x:Name="rbKabob"
+                        Content="Kabob"
+                        Click="btnMaxsulotTuri"
                         Style="{DynamicResource RadioButton}"/>
                     <RadioButton
+                        x:Name="rbIchimlik"
+                        Content="Ichimlik"
+                        Click="btnMaxsulotTuri"
+                        Style="{DynamicResource RadioButton}"/>
+                    <RadioButton
+                        x:Name="rbSalat"
                         Content="Salat"
+                        Click="btnMaxsulotTuri"
                         Style="{DynamicResource RadioButton}"/>
                     <RadioButton
+                        x:Name="rbShirinlik"
                         Content="Shirinlik"
+                        Click="btnMaxsulotTuri"
                         Style="{DynamicResource RadioButton}"/>
+                    
 
                 </StackPanel>
 
@@ -95,7 +111,9 @@
                         Background="{DynamicResource SecondColor}"
                         BorderBrush="{DynamicResource SeventhColor}">
                         <TextBox
+                            TextChanged="tbMaxsulotNarxi_TextChanged"
                             x:Name="tbMaxsulotNarxi"
+                            Margin="5 0"
                             BorderThickness="0"
                             VerticalAlignment="Center"
                             Background="Transparent"
@@ -138,12 +156,14 @@
                 Grid.Row="3">
                 <Button Grid.Row="2"
                         Style="{DynamicResource SaveButton}" 
-                        Content="Saqlash" Click="Button_Click" 
+                        Content="Saqlash" 
+                        Click="btnSaqlash_Click" 
                         >
                     <Button.Effect>
                         <DropShadowEffect
                                 Direction="290"
-                                ShadowDepth="5">
+                                ShadowDepth="5"
+                                Color="#75757575">
                         </DropShadowEffect>
                     </Button.Effect>
 

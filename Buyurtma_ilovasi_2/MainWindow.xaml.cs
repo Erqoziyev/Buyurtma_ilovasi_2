@@ -88,5 +88,10 @@ namespace Buyurtma_ilovasi_2
 
         }
 
+        private void btnKaboblar_Click(object sender, RoutedEventArgs e)
+        {
+            KabobPage sozlamalarPage = new KabobPage();
+            PageNavigator.Content = sozlamalarPage;
+        }
     }
 }

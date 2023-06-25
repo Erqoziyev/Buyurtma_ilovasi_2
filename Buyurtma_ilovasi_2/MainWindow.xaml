@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="MainWindow" Height="600" Width="1100">
+        Title="MainWindow" Height="700" Width="1100">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -47,7 +47,7 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="220"/>
-                    <ColumnDefinition Width="550"/>
+                    <ColumnDefinition Width="565"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column="0"
@@ -57,13 +57,45 @@
                         BorderBrush="{DynamicResource ThreedColor}">
                     
                     <!--MenuButtons-->
-                    <StackPanel Margin="5 10 0 0">
+                    <StackPanel Margin="5 10 0 10">
+                        <RadioButton 
+                            x:Name="rbBosh_stollar"
+                            Content="Bo'sh stollar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource stol}"
+                            Click="btnBosh_stollar_Click"/>
+                        <RadioButton 
+                            x:Name="rbOlib_ketish"
+                            Content="Olib ketish"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource olibketish}"
+                            Click="btnOlib_ketish_Click"/>
+                        <Border
+                            Margin="-5 5 -5 5"
+                            BorderThickness="0.5"
+                            BorderBrush="#E9DAC1">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    Opacity="10"
+                                    ShadowDepth="-1"
+                                    Color="#B9A16B">
+
+                                </DropShadowEffect>
+                            </Border.Effect>
+
+                        </Border>
                         <RadioButton 
                             x:Name="rbTaomlar"
                             Content="Taomlar"
                             Click="btnTaomlar_Click"
                             Style="{DynamicResource MenuButton}"
                             Tag ="{DynamicResource taom}"/>
+                        <RadioButton 
+                            x:Name="rbKaboblar"
+                            Content="Kaboblar"
+                            Style="{DynamicResource MenuButton}"
+                            Tag="{DynamicResource kabob}"
+                            Click="btnKaboblar_Click"/>
                         <RadioButton 
                             x:Name="rbIchimliklar"
                             Content="Ichimliklar"
@@ -82,24 +114,14 @@
                             Style="{DynamicResource MenuButton}"
                             Tag="{DynamicResource shirinlik}"
                             Click="btnShirinliklar_Click"/>
-                        <RadioButton 
-                            x:Name="rbBosh_stollar"
-                            Content="Bo'sh stollar"
-                            Style="{DynamicResource MenuButton}"
-                            Tag="{DynamicResource stol}"
-                            Click="btnBosh_stollar_Click"/>
-                        <RadioButton 
-                            x:Name="rbOlib_ketish"
-                            Content="Olib ketish"
-                            Style="{DynamicResource MenuButton}"
-                            Tag="{DynamicResource olibketish}"
-                            Click="btnOlib_ketish_Click"/>
+                        
                         <RadioButton 
                             x:Name="rbSozlamalar"
                             Content="Sozlamalar"
                             Style="{DynamicResource MenuButton}"
                             Tag="{DynamicResource sozlama}"
                             Click="btnSozlamalar_Click"/>
+                        
 
                     </StackPanel>
                     <!--MenuButtons-->
@@ -120,7 +142,7 @@
                     BorderBrush="{DynamicResource ThreedColor}"
                     Background="{DynamicResource FirstColor}"
                     CornerRadius="0 0 15 0">
-                    <DataGrid
+                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle2}"
                         Margin="0 40 0 60" 
                         Background="Transparent"
                         BorderThickness="0">

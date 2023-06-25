@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Buyurtma_ilovasi_2.ViewModels.Products;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace Buyurtma_ilovasi_2.Components
         public MealAddUserControl()
         {
             InitializeComponent();
+        }
+        public void SetData(ProductViewModel productViewModel)
+        {
+            lblFoodName.Content = productViewModel.MaxsulotNomi;
+            lblFoodPrice.Content = productViewModel.MaxsulotNarxi;
+            ImgBrushMeal.ImageSource = new BitmapImage(new System.Uri(productViewModel.MAxsulotRasmi, UriKind.Relative));
         }
 
     }

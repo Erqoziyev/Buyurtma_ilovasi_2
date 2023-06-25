@@ -6,41 +6,15 @@
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="540" d:DesignWidth="540"
-      Title="TaomlarPage">
+      Title="TaomlarPage"
+      Loaded="Page_Loaded">
 
     <Grid>
-        <WrapPanel Margin="10 0 10 0">
-            <!--<Grid 
-                Margin="0 5 0 5"
-                Height="200"
-                Width="520">
-                <Border 
-                    Height="200"
-                    Width="200"
-                    HorizontalAlignment="Left">
-                    
-
-                </Border>
-                <Label
-                    HorizontalAlignment="Center"
-                    FontSize="30"
-                    Content="Palov"
-                    Margin="220 30 180 130 "
-                    Height="40"
-                    Width="120">
-                    
-                    
-                </Label>
-
-
-
-            </Grid>-->
-             
+        <ScrollViewer>
+            <WrapPanel x:Name="wrpProduct"
+                   Margin="10">
             
-            
-            
-            
-        </WrapPanel>
-        
+            </WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

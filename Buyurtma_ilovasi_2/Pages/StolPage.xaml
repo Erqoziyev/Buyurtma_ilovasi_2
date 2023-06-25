@@ -5,51 +5,77 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="540" d:DesignWidth="540"
+      Height="540" Width="560"
       Title="StolPage">
 
     <Grid>
         <Label Content="Stollardan birini tanlang"
                HorizontalAlignment="Center"
-               FontSize="16"/>
+               FontSize="25"
+               FontFamily="jetbrains mono"
+               FontWeight="SemiBold"
+               />
         <WrapPanel
-            Margin="0 40 0 0">
-            <Button
+            Margin="10 40 0 0">
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    >
+                <Button
                 x:Name="btnStol_1" 
                 Content="1-stol"
+                FontSize="20"
+                Style="{DynamicResource TableButton}"
+                
+                />
+            </Border>
+
+                
+            
+            <Button
+                Content="2-stol"
                 FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="3-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="4-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="5-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="6-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="7-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
+                Content="8-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
             <Button
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
-                />
-            <Button
+                Content="9-stol"
+                FontSize="20"
                 Style="{DynamicResource TableButton}"
                 Margin="30 30 30 0"
                 />
