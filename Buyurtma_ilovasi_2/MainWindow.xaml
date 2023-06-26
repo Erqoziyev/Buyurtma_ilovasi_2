@@ -4,12 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Buyurtma_ilovasi_2"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="Transparent"
-        Title="MainWindow" Height="700" Width="1100">
+        Title="MainWindow" Height="700" Width="1200"
+        Loaded="Load">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -114,7 +116,20 @@
                             Style="{DynamicResource MenuButton}"
                             Tag="{DynamicResource shirinlik}"
                             Click="btnShirinliklar_Click"/>
-                        
+                        <Border
+                            Margin="-5 5 -5 5"
+                            BorderThickness="0.5"
+                            BorderBrush="#E9DAC1">
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    Opacity="10"
+                                    ShadowDepth="-1"
+                                    Color="#B9A16B">
+
+                                </DropShadowEffect>
+                            </Border.Effect>
+
+                        </Border>
                         <RadioButton 
                             x:Name="rbSozlamalar"
                             Content="Sozlamalar"
@@ -126,7 +141,7 @@
                     </StackPanel>
                     <!--MenuButtons-->
 
-
+                    
                 </Border>
 
                 <Border Grid.Column="1"
@@ -136,20 +151,87 @@
                    <Frame x:Name="PageNavigator"
                        NavigationUIVisibility="Hidden"/>
                 </Border>
+
                 <Border 
                     Grid.Column="2"
-                    BorderThickness="0 0 2 2"
-                    BorderBrush="{DynamicResource ThreedColor}"
-                    Background="{DynamicResource FirstColor}"
-                    CornerRadius="0 0 15 0">
-                    <DataGrid RowStyle="{DynamicResource DataGridRowStyle2}"
-                        Margin="0 40 0 60" 
-                        Background="Transparent"
-                        BorderThickness="0">
-                        
-                        
-                    </DataGrid>
-                    
+                    CornerRadius="0 0 15 0"
+                    Background="{DynamicResource FirstColor}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition  Height="50"/>
+                            <RowDefinition  Height="*"/>
+                            <RowDefinition  Height="80"/>
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            x:Name="lbstolDrid"
+                            Content=""
+                            Height="40"
+                            FontSize="20"
+                            FontWeight="SemiBold"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            />
+                        <DataGrid
+                            x:Name="DtgMaxsulot"
+                            AutoGenerateColumns="True"
+                            Grid.Row="1"
+                            Style="{DynamicResource DataGridStyle1}" 
+                            CellStyle="{DynamicResource DataGridCellStyle1}" 
+                            RowStyle="{DynamicResource DataGridRowStyle2}" 
+                            Background="Transparent"
+                            BorderThickness="2"
+                            BorderBrush="{DynamicResource ThreedColor}">
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Taom nomi" Binding="{Binding TaomNomi}" IsReadOnly="True" CanUserResize="False" Width="*"/>
+                                <DataGridTextColumn Header="Soni" Binding="{Binding Soni}" IsReadOnly="True" CanUserResize="False" Width="*"/>
+                                <DataGridTextColumn Header="Narxi" Binding="{Binding Narxi}" IsReadOnly="True" CanUserResize="False" Width="*"/>
+                                <DataGridTemplateColumn Header="      X" IsReadOnly="True" CanUserResize="False" Width="70">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Style="{DynamicResource gridEditButton}">
+                                                <Icon:PackIconMaterial Kind="DeleteOutline" Style="{DynamicResource btnDeleteIcon}"/>
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Grid
+                            Margin="15"
+                            Grid.Row="2">
+                            <Border
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource SeventhColor}"
+                                CornerRadius="5">
+                                <Button Style="{DynamicResource SaveButton}"
+                                        Content="Bekor qilish"
+                                        FontSize="16"
+                                        Width="100"
+                                        Height="30"/>
+                            </Border>
+                            <Border
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource SeventhColor}"
+                                CornerRadius="5">
+                                <Button Style="{DynamicResource SaveButton}"
+                                        Content="Sotib olish"
+                                        FontSize="16"
+                                        Height="30"
+                                        Width="100"/>
+                            </Border>
+                            
+
+                        </Grid>
+
+
+
+                    </Grid>
                 </Border>
             </Grid>
         </Border>

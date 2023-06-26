@@ -9,7 +9,9 @@
       Title="StolPage">
 
     <Grid>
-        <Label Content="Stollardan birini tanlang"
+        <Frame x:Name="PageNavigator"
+               NavigationUIVisibility="Hidden"/>
+        <Label Content="Stollardan birini tanlang!"
                HorizontalAlignment="Center"
                FontSize="25"
                FontFamily="jetbrains mono"
@@ -19,68 +21,168 @@
             Margin="10 40 0 0">
             <Border Margin="30 30 30 0"
                     BorderThickness="1"
-                    >
+                    BorderBrush="{DynamicResource FifthColor}">
                 <Button
-                x:Name="btnStol_1" 
+                x:Name="stol_1" 
+                Click="stol_1_Click"
                 Content="1-stol"
                 FontSize="20"
                 Style="{DynamicResource TableButton}"
                 
                 />
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
             </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
 
-                
-            
-            <Button
-                Content="2-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
+                <Button
+                    x:Name="stol_2"
+                    Content="2-stol"
+                    FontSize="20"  
+                    Click="stol_1_Click"
+                    Style="{DynamicResource TableButton}"
+                    />
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                    x:Name="stol_3"                
+                    Content="3-stol"  
+                    FontSize="20"
+                    Click="stol_1_Click"
+                    Style="{DynamicResource TableButton}"
                 />
-            <Button
-                Content="3-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                    x:Name="stol_4"
+                    Content="4-stol"
+                    Click="stol_1_Click"
+                    FontSize="20" 
+                    Style="{DynamicResource TableButton}"              
                 />
-            <Button
-                Content="4-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
-                />
-            <Button
-                Content="5-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
-                />
-            <Button
-                Content="6-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
-                />
-            <Button
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                    x:Name="stol_5"
+                    Content="5-stol"
+                    Click="stol_1_Click"
+                    FontSize="20"  
+                    Style="{DynamicResource TableButton}"
+                    />
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                    x:Name="stol_6"
+                    Content="6-stol"
+                    Click="stol_1_Click"
+                    FontSize="20" 
+                    Style="{DynamicResource TableButton}"
+                    />
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                x:Name="stol_7"
                 Content="7-stol"
-                FontSize="20"
+                Click="stol_1_Click"
+                FontSize="20"  
                 Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
                 />
-            <Button
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                x:Name="stol_8"
                 Content="8-stol"
-                FontSize="20"
+                Click="stol_1_Click"
+                FontSize="20"  
                 Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
                 />
-            <Button
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Border Margin="30 30 30 0"
+                    BorderThickness="1"
+                    BorderBrush="{DynamicResource FifthColor}">
+                <Button
+                x:Name="stol_9"
                 Content="9-stol"
-                FontSize="20"
+                Click="stol_1_Click"
+                FontSize="20"  
                 Style="{DynamicResource TableButton}"
-                Margin="30 30 30 0"
                 />
-
-
+                <Border.Effect>
+                    <DropShadowEffect
+                        Opacity="10"
+                        ShadowDepth="-1"
+                        Color="#B9A16B">
+                    </DropShadowEffect>
+                </Border.Effect>
+            </Border>
         </WrapPanel>
 
     </Grid>

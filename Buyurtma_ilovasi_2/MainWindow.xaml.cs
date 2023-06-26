@@ -1,6 +1,7 @@
 ﻿using Buyurtma_ilovasi_2.Pages;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static Buyurtma_ilovasi_2.Components.MealAddUserControl;
 
 namespace Buyurtma_ilovasi_2
 {
@@ -48,28 +50,22 @@ namespace Buyurtma_ilovasi_2
             this.DragMove();
         }
 
-        private void btnBosh_stollar_Click(object sender, RoutedEventArgs e)
+        public void btnBosh_stollar_Click(object sender, RoutedEventArgs e)
         {
-            StolPage stolPage = new StolPage();
+            StolPage stolPage = new StolPage(this);
             PageNavigator.Content = stolPage;
-        }
-
-        private void btnTaomlar_Click(object sender, RoutedEventArgs e)
-        {
-            TaomlarPage taomlarPage = new TaomlarPage();
-            PageNavigator.Content = taomlarPage;
         }
 
         private void btnIchimliklar_Click(object sender, RoutedEventArgs e)
         {
-            IchimliklarPage ichimliklarPage = new IchimliklarPage();    
-            PageNavigator.Content= ichimliklarPage;
+            IchimliklarPage ichimliklarPage = new IchimliklarPage();
+            PageNavigator.Content = ichimliklarPage;
         }
 
         private void btnSalatlar_Click(object sender, RoutedEventArgs e)
         {
             SalatlarPage salatlarPage = new SalatlarPage();
-            PageNavigator.Content= salatlarPage;
+            PageNavigator.Content = salatlarPage;
         }
 
         private void btnShirinliklar_Click(object sender, RoutedEventArgs e)
@@ -85,7 +81,9 @@ namespace Buyurtma_ilovasi_2
 
         private void btnOlib_ketish_Click(object sender, RoutedEventArgs e)
         {
-
+            TaomlarPage taomlarPage = new TaomlarPage();
+            PageNavigator.Content = taomlarPage;
+            lbstolDrid.Content = rbOlib_ketish.Content.ToString();
         }
 
         private void btnKaboblar_Click(object sender, RoutedEventArgs e)
@@ -93,5 +91,29 @@ namespace Buyurtma_ilovasi_2
             KabobPage sozlamalarPage = new KabobPage();
             PageNavigator.Content = sozlamalarPage;
         }
+
+        private void btnTaomlar_Click(object sender, RoutedEventArgs e)
+        {
+            TaomlarPage taomlarPage = new TaomlarPage();
+            PageNavigator.Content = taomlarPage;
+        }
+
+        public void btnTaomlar_Click()
+        {
+            TaomlarPage taomlarPage = new TaomlarPage();
+            PageNavigator.Content = taomlarPage;
+        }
+
+        private void Load(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void AddDataToDataGrid(AddValue addValue)
+        {
+            DtgMaxsulot.Items.Add(addValue);
+
+        }
+
+
     }
 }

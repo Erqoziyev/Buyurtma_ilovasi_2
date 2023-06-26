@@ -76,24 +76,29 @@
                 </Grid>
 
                 <StackPanel Grid.Row="1"
-                        Margin="0 15 10 5"
+                        Margin="0 5 10 5"
                         Orientation="Horizontal">
                     <Label
-                    FontSize="18"
-                    FontWeight="SemiBold"
-                    Content="Soni:"
-                    VerticalAlignment="Center"/>
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Content="Soni:"
+                        VerticalAlignment="Center"/>
                     <TextBox
-                    x:Name="tbCount"
-                    Margin="5"
-                    Height="25"
-                    Width="40"
-                    BorderThickness="0"
-                    Background="Transparent" 
-                    IsReadOnly="True"/>
+                        x:Name="tbCount"
+                        Margin="5"
+                        Height="25"
+                        Width="40"
+                        Text="0"
+                        FontSize="19"
+                        FontWeight="SemiBold"
+                        
+                        BorderThickness="0"
+                        Background="Transparent" 
+                        IsReadOnly="True"/>
 
                     <Button x:Name="btnPlus"
                         Margin="55 0 0 0"
+                        Click="btnPlus_Click"
                         Style="{DynamicResource AddButton}"
                         Tag="{DynamicResource plus}"
                         />
@@ -102,6 +107,7 @@
                         Margin="10 0"
                         Style="{DynamicResource AddButton}"
                         Tag="{DynamicResource mnus}"
+                        Click="btnMinus_Click"
                         />
 
                     <Button x:Name="btnXarid_qilish"
@@ -110,6 +116,7 @@
                         Width="80"
                         Style="{DynamicResource XaridButton}"
                         Content="Xarid qilish"
+                        Click="btnXarid_qilish_Click"  
                         />
 
                    

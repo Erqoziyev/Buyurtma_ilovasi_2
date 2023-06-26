@@ -20,9 +20,31 @@ namespace Buyurtma_ilovasi_2.Pages
     /// </summary>
     public partial class StolPage : Page
     {
+        
+        TaomlarPage taomlarPage = new TaomlarPage();
+
+        public Action btnTaomlar_Click { get; set; }
+        public MainWindow MainWindow { get; set; }
+
         public StolPage()
         {
             InitializeComponent();
+        }
+        public StolPage(MainWindow mainWindow)
+        {
+            InitializeComponent();
+            MainWindow = mainWindow;
+        }
+
+
+        public string lblstol = string.Empty;
+        private void stol_1_Click(object sender, RoutedEventArgs e)
+        {
+            TaomlarPage taomlarPage = new TaomlarPage();
+            btnTaomlar_Click = MainWindow.btnTaomlar_Click;
+            btnTaomlar_Click();
+            Button stolButton = (Button)sender;
+            MainWindow.lbstolDrid.Content = stolButton.Content.ToString();
         }
     }
 }

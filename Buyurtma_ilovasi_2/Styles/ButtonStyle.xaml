@@ -231,7 +231,7 @@
                             FontFamily="Jetbrains Mono"
                             FontWeight="SemiBold"
                             Foreground="{DynamicResource SeventhColor}"
-                            FontSize="16"
+                            FontSize="{TemplateBinding FontSize}"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Center"
                             Content="{TemplateBinding Content}"/>
@@ -295,7 +295,6 @@
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Setter TargetName="B" Property="Background" Value="{DynamicResource SecondColor}"/>
-                            <!--<Setter TargetName="Indicator" Property="Visibility" Value="Visible"/>-->
                         </Trigger>
 
                     </ControlTemplate.Triggers>
@@ -376,5 +375,29 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style x:Key="gridEditButton" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource FourthColor}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SeventhColor}"/>
+        <Setter Property="Foreground" Value="#ffffff"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="5" Padding="5" BorderThickness="1" 
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ThreedColor}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
