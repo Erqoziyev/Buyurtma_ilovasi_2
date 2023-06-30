@@ -1,4 +1,7 @@
-﻿using Buyurtma_ilovasi_2.Pages;
+﻿using Buyurtma_ilovasi_2.Entities.orders;
+using Buyurtma_ilovasi_2.Interface.orders;
+using Buyurtma_ilovasi_2.Pages;
+using Buyurtma_ilovasi_2.Repositories.Orders;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,9 +26,13 @@ namespace Buyurtma_ilovasi_2
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private readonly IOrderRepository _orderRepository;
+
         public MainWindow()
         {
             InitializeComponent();
+            this._orderRepository = new OrderRepository();
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -111,9 +118,61 @@ namespace Buyurtma_ilovasi_2
         public void AddDataToDataGrid(AddValue addValue)
         {
             DtgMaxsulot.Items.Add(addValue);
-
         }
 
+        public float summa = 0;
+        private async void btnXarid_qilish_Click(object sender, RoutedEventArgs e)
+        {
+            Orders orders = new Orders();
+            if (DtgMaxsulot.Items.Count > 0 )
+            {
+                if (lbstolDrid.Content != "")
+                {
+                    AddValue addValue = new AddValue();
+                    orders.table_name = lbstolDrid.Content.ToString();
+                    foreach (var item in DtgMaxsulot.Items)
+                    {
+                        addValue = item as AddValue;
+                        orders.food_name= addValue.TaomNomi.ToString();
+                        orders.food_count= addValue.Soni;
+                        orders.food_price= addValue.Narxi;
 
+                        var result = await _orderRepository.CreateAsync(orders);
+                    }
+
+                    MessageBox.Show($"Siz {summa} ming so'mlik maxsulot xarid qildingiz!");
+                    StolPage stolPage = new StolPage(this);
+                    PageNavigator.Content = stolPage;
+                }
+                else
+                {
+                    MessageBox.Show("Stol tanlanmagan!");
+                    StolPage stolPage = new StolPage(this);
+                    PageNavigator.Content = stolPage;
+                }
+            }
+            else
+                MessageBox.Show("Hali hech narsa xarid qilmadingiz!");
+        }
+
+        private void btnBekor_qilish(object sender, RoutedEventArgs e)
+        {
+            DtgMaxsulot.Items.Clear();
+        }
+
+        private void btnDelete(object sender, RoutedEventArgs e)
+        {
+            if (DtgMaxsulot.SelectedItems.Count > 0)
+            {
+
+                AddValue addValue = new AddValue();
+                foreach (var obj in DtgMaxsulot.SelectedItems)
+                {
+                    addValue = obj as AddValue;
+                    DtgMaxsulot.Items.Remove(addValue);
+                    break;
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,8 @@
-﻿using Buyurtma_ilovasi_2.ViewModels.Products;
+﻿using Buyurtma_ilovasi_2.Entities.orders;
+using Buyurtma_ilovasi_2.Interface.orders;
+using Buyurtma_ilovasi_2.Pages;
+using Buyurtma_ilovasi_2.Repositories.Orders;
+using Buyurtma_ilovasi_2.ViewModels.Products;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,9 +26,11 @@ namespace Buyurtma_ilovasi_2.Components
     /// </summary>
     public partial class MealAddUserControl : UserControl
     {
+
+
         public int count { get; set; }
         public Action<AddValue> Add { get; set; }
-        
+      
         public MealAddUserControl()
         {
             InitializeComponent();
@@ -39,18 +45,52 @@ namespace Buyurtma_ilovasi_2.Components
         private void btnXarid_qilish_Click(object sender, RoutedEventArgs e)
         {
 
-            MainWindow mainWindow =GetMainWindow();
+            MainWindow mainWindow = GetMainWindow();
 
             AddValue addValue2 = new AddValue();
+
+            int sum = Convert.ToInt32(tbCount.Text) * Convert.ToInt32(lblFoodPrice.Content.ToString());
             if (int.Parse(tbCount.Text) > 0)
             {
-                addValue2.TaomNomi = lblFoodName.Content.ToString();
-                addValue2.Narxi = Convert.ToInt32(lblFoodPrice.Content.ToString());
-                addValue2.Soni = Convert.ToInt32(tbCount.Text);
-                mainWindow.AddDataToDataGrid(addValue2);
+                if (mainWindow.DtgMaxsulot.Items.Count > 0)
+                {
+                    foreach (var item in mainWindow.DtgMaxsulot.Items)
+                    {
+                        addValue2 = item as AddValue;
+                        if (addValue2.TaomNomi == lblFoodName.Content)
+                        {
+                            int a = addValue2.Soni + int.Parse(tbCount.Text);
+                            float b = addValue2.Narxi + float.Parse(lblFoodPrice.Content.ToString());
+                            mainWindow.DtgMaxsulot.Items.Remove(addValue2);
+                            addValue2.TaomNomi = lblFoodName.Content.ToString();
+                            addValue2.Narxi = b;
+                            addValue2.Soni = a;
+                            mainWindow.AddDataToDataGrid(addValue2);
+                            mainWindow.summa += float.Parse(lblFoodPrice.Content.ToString());
+                        }
+                        else
+                        {
+                            addValue2.TaomNomi = lblFoodName.Content.ToString();
+                            addValue2.Narxi = sum;
+                            addValue2.Soni = Convert.ToInt32(tbCount.Text);
+                            mainWindow.AddDataToDataGrid(addValue2);
+                            mainWindow.summa += sum;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    addValue2.TaomNomi = lblFoodName.Content.ToString();
+                    addValue2.Narxi = sum;
+                    addValue2.Soni = Convert.ToInt32(tbCount.Text);
+                    mainWindow.AddDataToDataGrid(addValue2);
+                    mainWindow.summa += sum;
+                } 
             }
             else
                 MessageBox.Show("Nechta olishingizni kiriting!");
+
         }
 
         public static MainWindow GetMainWindow()

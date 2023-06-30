@@ -88,6 +88,8 @@ namespace Buyurtma_ilovasi_2.Pages
                 tbMaxsulotNomi.Text = string.Empty;
                 ImgBrush.ImageSource = null;
                 path = string.Empty;
+
+                MessageBox.Show("Malumotlar saqlandi!");
             }
             else MessageBox.Show("Ma'lumotlar to'liq kiritilmagan!");
         }

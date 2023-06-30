@@ -1,4 +1,8 @@
-﻿namespace Buyurtma_ilovasi_2.Entities.orders;
+﻿
+using Buyurtma_ilovasi_2.Entities;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Buyurtma_ilovasi_2.Entities.orders;
 
 public class Orders : BaseEntities
 {

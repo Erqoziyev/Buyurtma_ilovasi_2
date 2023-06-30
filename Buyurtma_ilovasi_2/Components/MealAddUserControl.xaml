@@ -57,7 +57,7 @@
                     />
 
                     <Path
-                    Margin="240 10 0 10"
+                    Margin="230 10 0 10"
                     VerticalAlignment="Center"
                     Data="{DynamicResource price}"
                     Fill="{DynamicResource SeventhColor}"/>
@@ -88,7 +88,7 @@
                         Margin="5"
                         Height="25"
                         Width="40"
-                        Text="0"
+                        Text="1"
                         FontSize="19"
                         FontWeight="SemiBold"
                         
@@ -111,11 +111,11 @@
                         />
 
                     <Button x:Name="btnXarid_qilish"
-                        Margin="10 0 0 0"
+                        Margin="50 0 0 0"
                         Height="25"
-                        Width="80"
+                        Width="40"
                         Style="{DynamicResource XaridButton}"
-                        Content="Xarid qilish"
+                        Tag="{DynamicResource korzinka}"
                         Click="btnXarid_qilish_Click"  
                         />
 

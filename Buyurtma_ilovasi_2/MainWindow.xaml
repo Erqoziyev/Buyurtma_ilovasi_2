@@ -132,9 +132,9 @@
                         </Border>
                         <RadioButton 
                             x:Name="rbSozlamalar"
-                            Content="Sozlamalar"
+                            Content="Qo'shish"
                             Style="{DynamicResource MenuButton}"
-                            Tag="{DynamicResource sozlama}"
+                            Tag="{DynamicResource add}"
                             Click="btnSozlamalar_Click"/>
                         
 
@@ -155,6 +155,8 @@
                 <Border 
                     Grid.Column="2"
                     CornerRadius="0 0 15 0"
+                    BorderThickness="0 0 2 2"
+                    BorderBrush="{DynamicResource ThreedColor}"
                     Background="{DynamicResource FirstColor}">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -180,17 +182,32 @@
                             CellStyle="{DynamicResource DataGridCellStyle1}" 
                             RowStyle="{DynamicResource DataGridRowStyle2}" 
                             Background="Transparent"
-                            BorderThickness="2"
+                            BorderThickness="0 2 0 2"
                             BorderBrush="{DynamicResource ThreedColor}">
 
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Taom nomi" Binding="{Binding TaomNomi}" IsReadOnly="True" CanUserResize="False" Width="*"/>
-                                <DataGridTextColumn Header="Soni" Binding="{Binding Soni}" IsReadOnly="True" CanUserResize="False" Width="*"/>
-                                <DataGridTextColumn Header="Narxi" Binding="{Binding Narxi}" IsReadOnly="True" CanUserResize="False" Width="*"/>
+                                <DataGridTextColumn Header="Taom nomi" 
+                                                    Binding="{Binding TaomNomi}" 
+                                                    IsReadOnly="True"
+                                                    CanUserResize="False" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="Soni" 
+                                                    Binding="{Binding Soni}" 
+                                                    IsReadOnly="True"
+                                                    CanUserResize="False" 
+                                                    Width="*"/>
+                                <DataGridTextColumn Header="Narxi"
+                                                    Binding="{Binding Narxi}" 
+                                                    IsReadOnly="True" 
+                                                    CanUserResize="False"
+                                                    Width="*"/>
                                 <DataGridTemplateColumn Header="      X" IsReadOnly="True" CanUserResize="False" Width="70">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
-                                            <Button Style="{DynamicResource gridEditButton}">
+                                            <Button
+                                                x:Name="btnDelete"
+                                                Style="{DynamicResource gridEditButton}"
+                                                Click="btnDelete">
                                                 <Icon:PackIconMaterial Kind="DeleteOutline" Style="{DynamicResource btnDeleteIcon}"/>
                                             </Button>
                                         </DataTemplate>
@@ -211,7 +228,8 @@
                                         Content="Bekor qilish"
                                         FontSize="16"
                                         Width="100"
-                                        Height="30"/>
+                                        Height="30"
+                                        Click="btnBekor_qilish"/>
                             </Border>
                             <Border
                                 VerticalAlignment="Center"
@@ -220,10 +238,12 @@
                                 BorderBrush="{DynamicResource SeventhColor}"
                                 CornerRadius="5">
                                 <Button Style="{DynamicResource SaveButton}"
-                                        Content="Sotib olish"
+                                        x:Name="btnXarid_qilish"
+                                        Content="Xarid qilish"
                                         FontSize="16"
                                         Height="30"
-                                        Width="100"/>
+                                        Width="100"
+                                        Click="btnXarid_qilish_Click"/>
                             </Border>
                             
 

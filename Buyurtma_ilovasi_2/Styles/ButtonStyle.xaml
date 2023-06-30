@@ -353,12 +353,11 @@
                         Background="#EFF7FF"
                         CornerRadius="5"
                         >
-                        <Label Grid.Column="2"
-                                   FontSize="{TemplateBinding FontSize}"
-                                   Content="{TemplateBinding Content}"
-                                   FontFamily="Arial"
-                                   FontWeight="DemiBold"
-                                   VerticalAlignment="Center"/>
+                        <Path Fill="Black" 
+                              Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+                              Height="15"
+                              Width="15"
+                              Stretch="Uniform"/>
 
                     </Border>
                     <ControlTemplate.Triggers>
