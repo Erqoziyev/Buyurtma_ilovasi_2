@@ -19,121 +19,116 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Buyurtma_ilovasi_2.Components
+namespace Buyurtma_ilovasi_2.Components;
+
+/// <summary>
+/// Interaction logic for MealAddUserControl.xaml
+/// </summary>
+public partial class MealAddUserControl : UserControl
 {
-    /// <summary>
-    /// Interaction logic for MealAddUserControl.xaml
-    /// </summary>
-    public partial class MealAddUserControl : UserControl
+
+    List<OrderedMealUserControl> lists = new List<OrderedMealUserControl>();
+
+    public int count { get; set; }
+    public MealAddUserControl()
     {
+        InitializeComponent();
+    }
+    public void SetData(ProductViewModel productViewModel)
+    {
+        lblFoodName.Content = productViewModel.MaxsulotNomi;
+        lblFoodPrice.Content = productViewModel.MaxsulotNarxi;
+        ImgBrushMeal.ImageSource = new BitmapImage(new System.Uri(productViewModel.MAxsulotRasmi, UriKind.Relative));
+    }
 
+    private void btnXarid_qilish_Click(object sender, RoutedEventArgs e)
+    {
+        MainWindow mainWindow = GetMainWindow();
+        lists = mainWindow.list;
+        mainWindow.DeleteOrders = DeleteOrder;
+        Order orders = new Order();
 
-        public int count { get; set; }
-        public Action<AddValue> Add { get; set; }
-      
-        public MealAddUserControl()
+        if (lists.Count > 0)
         {
-            InitializeComponent();
-        }
-        public void SetData(ProductViewModel productViewModel)
-        {
-            lblFoodName.Content = productViewModel.MaxsulotNomi;
-            lblFoodPrice.Content = productViewModel.MaxsulotNarxi;
-            ImgBrushMeal.ImageSource = new BitmapImage(new System.Uri(productViewModel.MAxsulotRasmi, UriKind.Relative));
-        }
-
-        private void btnXarid_qilish_Click(object sender, RoutedEventArgs e)
-        {
-
-            MainWindow mainWindow = GetMainWindow();
-
-            AddValue addValue2 = new AddValue();
-
-            int sum = Convert.ToInt32(tbCount.Text) * Convert.ToInt32(lblFoodPrice.Content.ToString());
-            if (int.Parse(tbCount.Text) > 0)
+            bool chack = true;
+            for (var i=0; i<lists.Count; i++)
             {
-                if (mainWindow.DtgMaxsulot.Items.Count > 0)
+                if (lblFoodName.Content.ToString() == lists[i].lblName.Content.ToString())
                 {
-                    foreach (var item in mainWindow.DtgMaxsulot.Items)
-                    {
-                        addValue2 = item as AddValue;
-                        if (addValue2.TaomNomi == lblFoodName.Content)
-                        {
-                            int a = addValue2.Soni + int.Parse(tbCount.Text);
-                            float b = addValue2.Narxi + float.Parse(lblFoodPrice.Content.ToString());
-                            mainWindow.DtgMaxsulot.Items.Remove(addValue2);
-                            addValue2.TaomNomi = lblFoodName.Content.ToString();
-                            addValue2.Narxi = b;
-                            addValue2.Soni = a;
-                            mainWindow.AddDataToDataGrid(addValue2);
-                            mainWindow.summa += float.Parse(lblFoodPrice.Content.ToString());
-                        }
-                        else
-                        {
-                            addValue2.TaomNomi = lblFoodName.Content.ToString();
-                            addValue2.Narxi = sum;
-                            addValue2.Soni = Convert.ToInt32(tbCount.Text);
-                            mainWindow.AddDataToDataGrid(addValue2);
-                            mainWindow.summa += sum;
-                            break;
-                        }
-                    }
+                    chack = false;
                 }
-                else
-                {
-                    addValue2.TaomNomi = lblFoodName.Content.ToString();
-                    addValue2.Narxi = sum;
-                    addValue2.Soni = Convert.ToInt32(tbCount.Text);
-                    mainWindow.AddDataToDataGrid(addValue2);
-                    mainWindow.summa += sum;
-                } 
+                
+                    
+            }
+
+            if (chack)
+            {
+                int sum = Convert.ToInt32(tbCount.Text) * Convert.ToInt32(lblFoodPrice.Content.ToString());
+                orders.food_price = sum;
+                orders.food_name = lblFoodName.Content.ToString();
+                orders.food_count = int.Parse(tbCount.Text.ToString());
+                mainWindow.RefreshAsync(orders);
             }
             else
-                MessageBox.Show("Nechta olishingizni kiriting!");
+            {
+                MessageBox.Show("Kechirasiz bu maxsulot belgilangan. Qayta tanlash uchun ro'yxatdan o'chiring!");
+            }
+
+
 
         }
-
-        public static MainWindow GetMainWindow()
+        else
         {
-            MainWindow mainWindow = null;
-
-            foreach (Window window in Application.Current.Windows)
+            int sum = Convert.ToInt32(tbCount.Text) * Convert.ToInt32(lblFoodPrice.Content.ToString());
+            orders.food_price = sum;
+            orders.food_name = lblFoodName.Content.ToString();
+            orders.food_count = int.Parse(tbCount.Text.ToString());
+            mainWindow.RefreshAsync(orders);
+        }
+    }
+    public void DeleteOrder(string food_name)
+    {
+        for (int i = 0; i < lists.Count; i++)
+        {
+            if (lists[i].lblName.Content.ToString() == food_name)
             {
-                Type type = typeof(MainWindow);
-                if (window != null && window.DependencyObjectType.Name == type.Name)
+                lists.RemoveAt(i);
+            }
+        }
+    }
+
+    public static MainWindow GetMainWindow()
+    {
+        MainWindow mainWindow = null;
+
+        foreach (Window window in Application.Current.Windows)
+        {
+            Type type = typeof(MainWindow);
+            if (window != null && window.DependencyObjectType.Name == type.Name)
+            {
+                mainWindow = (MainWindow)window;
+                if (mainWindow != null)
                 {
-                    mainWindow = (MainWindow)window;
-                    if (mainWindow != null)
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
-            return mainWindow;
-
         }
-        public class AddValue
+        return mainWindow;
+
+    }
+
+    private void btnMinus_Click(object sender, RoutedEventArgs e)
+    {
+        if(count > 1)
         {
-            public string TaomNomi { get; set; } = String.Empty;
-            public int Soni { get; set; }
-            public float Narxi { get; set; }
-
+            count--;
         }
-    
+        tbCount.Text = count.ToString();
+    }
 
-        private void btnMinus_Click(object sender, RoutedEventArgs e)
-        {
-            if(count > 0)
-            {
-                count--;
-            }
-            tbCount.Text = count.ToString();
-        }
-
-        private void btnPlus_Click(object sender, RoutedEventArgs e)
-        {
-            count++;
-            tbCount.Text = count.ToString();
-        }
+    private void btnPlus_Click(object sender, RoutedEventArgs e)
+    {
+        count++;
+        tbCount.Text = count.ToString();
     }
 }

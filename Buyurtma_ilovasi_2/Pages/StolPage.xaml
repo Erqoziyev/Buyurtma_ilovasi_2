@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
       Height="540" Width="560"
+      Loaded="Yaxshimisz_load"
       Title="StolPage">
 
     <Grid>
-        <Frame x:Name="PageNavigator"
-               NavigationUIVisibility="Hidden"/>
+        
         <Label Content="Stollardan birini tanlang!"
                HorizontalAlignment="Center"
                FontSize="25"
@@ -23,11 +23,12 @@
                     BorderThickness="1"
                     BorderBrush="{DynamicResource FifthColor}">
                 <Button
-                x:Name="stol_1" 
-                Click="stol_1_Click"
-                Content="1-stol"
-                FontSize="20"
-                Style="{DynamicResource TableButton}"
+                    x:Name="stol_1" 
+                    Click="stol_1_Click"
+                    Content="1-stol"
+                    FontSize="20"
+                    Background="{DynamicResource FirstColor}" 
+                    Style="{DynamicResource TableButton}"
                 
                 />
                 <Border.Effect>
@@ -47,6 +48,7 @@
                     Content="2-stol"
                     FontSize="20"  
                     Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                     Style="{DynamicResource TableButton}"
                     />
                 <Border.Effect>
@@ -64,6 +66,7 @@
                     x:Name="stol_3"                
                     Content="3-stol"  
                     FontSize="20"
+                    Background="{DynamicResource FirstColor}" 
                     Click="stol_1_Click"
                     Style="{DynamicResource TableButton}"
                 />
@@ -82,6 +85,7 @@
                     x:Name="stol_4"
                     Content="4-stol"
                     Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                     FontSize="20" 
                     Style="{DynamicResource TableButton}"              
                 />
@@ -100,6 +104,7 @@
                     x:Name="stol_5"
                     Content="5-stol"
                     Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                     FontSize="20"  
                     Style="{DynamicResource TableButton}"
                     />
@@ -118,6 +123,7 @@
                     x:Name="stol_6"
                     Content="6-stol"
                     Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                     FontSize="20" 
                     Style="{DynamicResource TableButton}"
                     />
@@ -136,6 +142,7 @@
                 x:Name="stol_7"
                 Content="7-stol"
                 Click="stol_1_Click"
+                Background="{DynamicResource FirstColor}" 
                 FontSize="20"  
                 Style="{DynamicResource TableButton}"
                 />
@@ -154,6 +161,7 @@
                 x:Name="stol_8"
                 Content="8-stol"
                 Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                 FontSize="20"  
                 Style="{DynamicResource TableButton}"
                 />
@@ -172,6 +180,7 @@
                 x:Name="stol_9"
                 Content="9-stol"
                 Click="stol_1_Click"
+                    Background="{DynamicResource FirstColor}" 
                 FontSize="20"  
                 Style="{DynamicResource TableButton}"
                 />

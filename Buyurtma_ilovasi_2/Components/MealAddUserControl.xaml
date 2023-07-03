@@ -97,7 +97,7 @@
                         IsReadOnly="True"/>
 
                     <Button x:Name="btnPlus"
-                        Margin="55 0 0 0"
+                        Margin="85 0 0 0"
                         Click="btnPlus_Click"
                         Style="{DynamicResource AddButton}"
                         Tag="{DynamicResource plus}"
@@ -111,7 +111,7 @@
                         />
 
                     <Button x:Name="btnXarid_qilish"
-                        Margin="50 0 0 0"
+                        Margin="20 0 0 0"
                         Height="25"
                         Width="40"
                         Style="{DynamicResource XaridButton}"

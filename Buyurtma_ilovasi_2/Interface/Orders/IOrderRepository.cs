@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace Buyurtma_ilovasi_2.Interface.orders;
 
-public interface IOrderRepository : IRepository<Orders, Orders>
+public interface IOrderRepository : IRepository<Order, Order>
 {
-    Task GetAllAsync(Orders orders);
-    public void getname(string name);
 }

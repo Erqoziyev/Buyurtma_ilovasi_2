@@ -17,7 +17,7 @@ namespace Buyurtma_ilovasi_2.Interface
 
         public Task<IList<TViewModel>> GetAllAsync(PagenationParams @params);
 
-        public Task<TViewModel> GetAsync(long id); 
-        
+        public Task<TViewModel> GetAsync(long id);
+
     }
 }

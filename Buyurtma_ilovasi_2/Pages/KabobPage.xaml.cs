@@ -1,4 +1,5 @@
 ﻿using Buyurtma_ilovasi_2.Components;
+using Buyurtma_ilovasi_2.Entities.orders;
 using Buyurtma_ilovasi_2.Entities.Products;
 using Buyurtma_ilovasi_2.Repositories.Products;
 using System;
@@ -24,6 +25,8 @@ namespace Buyurtma_ilovasi_2.Pages
     public partial class KabobPage : Page
     {
         private readonly ProductRepository _productRepository;
+
+
 
         public KabobPage()
         {

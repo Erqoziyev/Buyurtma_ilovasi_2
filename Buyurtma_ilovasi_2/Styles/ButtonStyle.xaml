@@ -180,7 +180,7 @@
                     <Grid
                        
                         x:Name="B"
-                        Background="{DynamicResource FirstColor}"
+                        Background="{TemplateBinding Background}"
                         >
                         <Path Fill="Black" 
                               Data="{DynamicResource table}"
@@ -203,7 +203,6 @@
                             <Setter TargetName="B" Property="Background" Value="{DynamicResource ThreedColor}"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="False">
-                            <Setter TargetName="B" Property="Background" Value="{DynamicResource FirstColor}"/>
                         </Trigger>
 
                     </ControlTemplate.Triggers>
@@ -318,8 +317,8 @@
                         >
                         <Path Fill="Black" 
                               Data="{Binding Tag, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
-                              Height="10"
-                              Width="10"
+                              Height="15"
+                              Width="15"
                               Stretch="Uniform"/>
                         
                                    

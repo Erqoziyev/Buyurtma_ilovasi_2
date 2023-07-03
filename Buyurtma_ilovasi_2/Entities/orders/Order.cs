@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Buyurtma_ilovasi_2.Entities.orders;
 
-public class Orders : BaseEntities
+public class Order : BaseEntities
 {
     public string table_name  { get; set; } = string.Empty;
     public string food_name { get; set; } = string.Empty;
