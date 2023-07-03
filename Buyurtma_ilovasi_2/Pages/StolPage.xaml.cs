@@ -15,6 +15,7 @@ namespace Buyurtma_ilovasi_2.Pages
     /// </summary>
     public partial class StolPage : Page
     {
+
         private readonly OrderRepository _orderRepository;
 
         private readonly TableRepository _tableRepository;
@@ -41,39 +42,51 @@ namespace Buyurtma_ilovasi_2.Pages
 
         private async void stol_1_Click(object sender, RoutedEventArgs e)
         {
+            TaomlarPage taomlarPage = new TaomlarPage();
+            PeymentPage page = new PeymentPage();
             Button stolButton = (Button)sender;
-            MainWindow.lbstolDrid.Content = stolButton.Content.ToString();
+
             string str = stolButton.Content.ToString();
+            page.table_name = stolButton.Content.ToString();
+
             bool is_empty =await _tableRepository.GetByAsync(str);
 
             if (!is_empty)
             {
                 MessageBoxResult result = MessageBox.Show("Hisobni to'lash", "Davom etish",
-                                                            MessageBoxButton.YesNo, MessageBoxImage.Information,
+                                                            MessageBoxButton.YesNo, MessageBoxImage.None,
                                                             MessageBoxResult.Yes, MessageBoxOptions.DefaultDesktopOnly);
+
                 if (result == MessageBoxResult.Yes)
                 {
-
-                    PeymentPage page = new PeymentPage();
                     MainWindow.PageNavigator.Content = page;
+                }
+                else
+                {
+                    btnTaomlar_Click = MainWindow.btnTaomlar_Click;
+                    btnTaomlar_Click();
 
+                    MainWindow.stpOrders.Children.Clear();
+                    MainWindow.rbBosh_stollar.IsChecked = false;
+                    MainWindow.rbTaomlar.IsChecked = true;
                 }
                 var orders = await _orderRepository.GetAllByString(str);
 
                 foreach (var order in orders)
                 {
+                    page.summa += order.food_price;
                     OrderedMealUserControl orderedMealUserControl = new OrderedMealUserControl();
                     orderedMealUserControl.SetData(order);
                     orderedMealUserControl.btndelete.IsEnabled = false;
-                    MainWindow.stpOrders.Children.Add(orderedMealUserControl);
+                    page.stpOrdered.Children.Add(orderedMealUserControl);
                 }
             }
             else
             {
-
-                TaomlarPage taomlarPage = new TaomlarPage();
                 btnTaomlar_Click = MainWindow.btnTaomlar_Click;
                 btnTaomlar_Click();
+
+                MainWindow.lbstolDrid.Content = stolButton.Content.ToString();
 
                 MainWindow.stpOrders.Children.Clear();
                 MainWindow.rbBosh_stollar.IsChecked = false;
@@ -81,8 +94,7 @@ namespace Buyurtma_ilovasi_2.Pages
             }
 
         } 
-
-       
+        
         private async void Yaxshimisz_load(object sender, RoutedEventArgs e)
         {
             var paginationParams = new PagenationParams()
@@ -90,6 +102,7 @@ namespace Buyurtma_ilovasi_2.Pages
                 PageNumber = 1,
                 PageSize = 50
             };
+            
             var tables = await _tableRepository.GetAllAsync(paginationParams);
             foreach (var table in tables)
             {
@@ -98,21 +111,21 @@ namespace Buyurtma_ilovasi_2.Pages
                     string name_table = table.table_name.ToString()!;
 
                     if (stol_1.Content.ToString() == name_table)
-                        this.stol_1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_1.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_2.Content.ToString() == name_table)
-                        this.stol_2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_2.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_3.Content.ToString() == name_table)
-                        this.stol_3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_3.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_4.Content.ToString() == name_table)
-                        this.stol_4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_4.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_5.Content.ToString() == name_table)
-                        this.stol_5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_5.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_6.Content.ToString() == name_table)
-                        this.stol_6.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_6.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_7.Content.ToString() == name_table)
-                        this.stol_7.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_7.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if (stol_8.Content.ToString() == name_table)
-                        this.stol_8.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BDA373"));
+                        this.stol_8.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                     else if(stol_9.Content.ToString() == name_table)
                         this.stol_9.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#E9CD99"));
                 }

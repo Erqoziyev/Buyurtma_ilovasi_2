@@ -66,6 +66,7 @@ internal class OrderRepository : BaseRepository, IOrderRepository
     }
 
     public async Task<IList<Order>> GetAllByString(string table_name)
+
     {
         try
         {
@@ -102,4 +103,28 @@ internal class OrderRepository : BaseRepository, IOrderRepository
         }
     }
 
+    public async Task<int> DeletedAsync(string table_name)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+
+            string query = $"DELETE FROM public.orders WHERE table_name = '{table_name}';";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                var res = await command.ExecuteNonQueryAsync();
+                return res;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
 }

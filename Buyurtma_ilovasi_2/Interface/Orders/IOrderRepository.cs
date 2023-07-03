@@ -10,4 +10,6 @@ namespace Buyurtma_ilovasi_2.Interface.orders;
 
 public interface IOrderRepository : IRepository<Order, Order>
 {
+    public Task<int> DeletedAsync(string table_name);
+
 }

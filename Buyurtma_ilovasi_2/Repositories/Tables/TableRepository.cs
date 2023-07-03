@@ -109,13 +109,38 @@ internal class TableRepository : BaseRepository, ITableRepository
         throw new NotImplementedException();
     }
 
-    public async Task<int> UpdatedAsync(string table_name)
+    public async Task<int> UpdatedFalseAsync(string table_name)
     {
         try
         {
             await _connection.OpenAsync();
 
             string query = $"UPDATE public.tables SET is_empty = false WHERE name = '{table_name}';";
+            await using (var command = new NpgsqlCommand(query, _connection))
+            {
+                var res = await command.ExecuteNonQueryAsync();
+                return res;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return 0;
+        }
+        finally
+        {
+            await _connection.CloseAsync();
+        }
+    }
+
+    public async Task<int> UpdatedTrueAsync(string table_name)
+    {
+        try
+        {
+            await _connection.OpenAsync();
+
+            string query = $"UPDATE public.tables SET is_empty = true WHERE name = '{table_name}';";
             await using (var command = new NpgsqlCommand(query, _connection))
             {
                 var res = await command.ExecuteNonQueryAsync();

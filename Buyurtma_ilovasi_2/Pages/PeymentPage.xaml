@@ -5,55 +5,111 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Pages"
       mc:Ignorable="d" 
+      Loaded="Loading"
       d:DesignHeight="450" d:DesignWidth="400"
       Title="PeymentPage">
     <Border
-        Margin="20"
+        Margin="15"
         CornerRadius="22 22 0 0"
-        BorderThickness="4"
-        BorderBrush="{DynamicResource ThreedColor}">
+        BorderThickness="2"
+        BorderBrush="{DynamicResource SeventhColor}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
 
         <Border
             Grid.Row="0"
-            Background="{DynamicResource SecondColor}"
-            BorderBrush="{DynamicResource ThreedColor}"
-            BorderThickness="0 0 0 3"
+            Background="{DynamicResource FourthColor}"
+            BorderBrush="{DynamicResource SeventhColor}"
+            BorderThickness="0 0 0 2"
             CornerRadius="20 20 0 0">
-            <Label 
-               Content="Hisob"
-               HorizontalAlignment="Center"
-               FontSize="30"
-               FontFamily="jetbrains mono"
-               FontWeight="SemiBold"
-                VerticalAlignment="Center"
-               />
+                <StackPanel
+                    Orientation="Horizontal">
+                    <Label
+                        Margin="10 0"
+                        Content="Umumiy hisob"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        FontFamily="jetbrains mono"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"
+                        />
+                    <Label
+                        x:Name="lblsom"
+                        Content=""
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        FontFamily="jetbrains mono"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"
+                        />
+                    <Label 
+                        Content=" so'm"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        FontFamily="jetbrains mono"
+                        FontWeight="SemiBold"
+                        VerticalAlignment="Center"
+                        />
+                </StackPanel>
 
 
         </Border>
+            <Border 
+                Grid.Row="1"
+                Background="{DynamicResource FirstColor}">
+                <ScrollViewer >
+                    <StackPanel
+                        x:Name="stpOrdered"
+                        Orientation="Vertical"
+                        Margin="5 0 0 10">
+                   </StackPanel>
+                </ScrollViewer>
+            </Border>
+            <Grid 
+                Background="{DynamicResource FirstColor}"
+                Grid.Row="2">
 
-        <Grid 
-            
-            Background="{DynamicResource FirstColor}"
-            Grid.Row="1">
-            
-            
-            
-            
-        </Grid>
+                <Label
+                    Content="Summani kiriting"
+                    Margin="5 10 0 0"
+                    FontSize="18"
+                    FontWeight="SemiBold"
+                    Height="40"/>
+                <Border
+                        CornerRadius="10"
+                        Height="30"
+                        Margin="250 10 10 0"
+                        BorderThickness="1"
+                        Background="{DynamicResource SecondColor}"
+                        BorderBrush="{DynamicResource SeventhColor}">
+                    <TextBox
+                            TextChanged="tbMaxsulotNarxi_TextChanged"
+                            x:Name="tbMaxsulotNarxi"
+                            Margin="5 0"
+                            BorderThickness="0"
+                            VerticalAlignment="Center"
+                            Background="Transparent"
+                            FontSize="18"/>
+
+                </Border>
+
+
+
+            </Grid>
         <Grid
             Background="{DynamicResource FirstColor}"
-            Grid.Row="2">
+            Grid.Row="3">
             <Button 
+                x:Name="btnTolash"
                 Style="{DynamicResource SaveButton}" 
                 Content="To'lash" 
                 FontSize="20"
-                 
+                Click="btnTolash_Click"   
                 >
             <Button.Effect>
                 <DropShadowEffect

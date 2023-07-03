@@ -177,7 +177,7 @@ public partial class MainWindow : Window
             lbstolDrid.Content = "";
             ischeck = true;
 
-            await _tableRepository.UpdatedAsync(name);
+            await _tableRepository.UpdatedFalseAsync(name);
             
             StolPage stolPage = new StolPage(this);
             
@@ -193,7 +193,7 @@ public partial class MainWindow : Window
 
     }
 
-    private void btnBekor_qilish(object sender, RoutedEventArgs e)
+    public void btnBekor_qilish(object sender, RoutedEventArgs e)
     {
         list.Clear();
         stpOrders.Children.Clear();
