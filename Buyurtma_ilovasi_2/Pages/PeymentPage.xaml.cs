@@ -1,20 +1,10 @@
 ﻿using Buyurtma_ilovasi_2.Repositories.Orders;
 using Buyurtma_ilovasi_2.Repositories.Tables;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Buyurtma_ilovasi_2.Pages;
 
@@ -43,7 +33,7 @@ public partial class PeymentPage : Page
     public PeymentPage(MainWindow mainWindow)
     {
         InitializeComponent();
-        MainWindow = mainWindow;        
+        MainWindow = mainWindow;
         this._orderRepository = new OrderRepository();
         this._tableRepository = new TableRepository();
     }
@@ -67,12 +57,18 @@ public partial class PeymentPage : Page
         MainWindow mainWindow = GetMainWindow();
 
         float a = float.Parse(tbMaxsulotNarxi.Text.ToString());
-        if(summa == a)
+        if (summa == a)
         {
+            MessageBox.Show("To'lov o'tdi. Tashrifingiz uchun rahmat! ");
             var result = await _tableRepository.UpdatedTrueAsync(table_name);
-            var res  = await _orderRepository.DeletedAsync(table_name);
+            var res = await _orderRepository.DeletedAsync(table_name);
             StolPage stolPage = new StolPage();
             mainWindow.PageNavigator.Content = stolPage;
+            mainWindow.list.Clear();
+            mainWindow.stpOrders.Children.Clear();
+            mainWindow.ord.Clear();
+            mainWindow.lbstolDrid.Content = "";
+            summa = 0;
         }
         else
         {
@@ -83,7 +79,6 @@ public partial class PeymentPage : Page
 
     private void Loading(object sender, RoutedEventArgs e)
     {
-        StolPage stolPage = new StolPage();
         lblsom.Content = summa;
     }
 

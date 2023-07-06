@@ -35,7 +35,7 @@ public partial class MainWindow : Window
 {
     public List<OrderedMealUserControl> list = new List<OrderedMealUserControl>();
 
-    List<Order> ord = new List<Order>();
+    public List<Order> ord = new List<Order>();
 
     private readonly TableRepository _tableRepository;
 
@@ -137,51 +137,69 @@ public partial class MainWindow : Window
     public float summa = 0;
     private async void btnXarid_qilish_Click(object sender, RoutedEventArgs e)
     {
+        summa = 0;
         if (lbstolDrid.Content != "" && ord.Count > 0)
         {
-            string name = lbstolDrid.Content.ToString();
-            try
+            if (lbstolDrid.Content.ToString() == "Olib ketish")
             {
-
-                await _connection.OpenAsync();
                 foreach (var obj in ord)
                 {
-                    obj.table_name = name;
-                    string query = "INSERT INTO public.orders(table_name, food_name, food_count, food_price)" +
-                                  "VALUES (@table_name, @food_name, @food_count, @food_price);";
-
-                    await using (var command = new NpgsqlCommand(query, _connection))
-                    {
-                        command.Parameters.AddWithValue("table_name", obj.table_name);
-                        command.Parameters.AddWithValue("food_name", obj.food_name);
-                        command.Parameters.AddWithValue("food_count", obj.food_count);
-                        command.Parameters.AddWithValue("food_price", obj.food_price);
-
-                        var result = await command.ExecuteNonQueryAsync();
-                    }
                     summa += obj.food_price;
                 }
+                
+                MessageBox.Show($"Siz {summa} so'mlik xarid amalda oshirdingiz. Buyurtmangiz olib ketish uchun tayyorlanmoqda. Iltimos hisobni to'lang va biroz kuting");
+                PeymentPage peymentPage = new PeymentPage();
+                peymentPage.summa = summa;
+                PageNavigator.Content = peymentPage;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                string name = lbstolDrid.Content.ToString();
+                try
+                {
+
+                    await _connection.OpenAsync();
+                    foreach (var obj in ord)
+                    {
+                        obj.table_name = name;
+                        string query = "INSERT INTO public.orders(table_name, food_name, food_count, food_price)" +
+                                      "VALUES (@table_name, @food_name, @food_count, @food_price);";
+                        
+                        await using (var command = new NpgsqlCommand(query, _connection))
+                        {
+                            command.Parameters.AddWithValue("table_name", obj.table_name);
+                            command.Parameters.AddWithValue("food_name", obj.food_name);
+                            command.Parameters.AddWithValue("food_count", obj.food_count);
+                            command.Parameters.AddWithValue("food_price", obj.food_price);
+
+                            var result = await command.ExecuteNonQueryAsync();
+                        }
+                        summa += obj.food_price;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    await _connection.CloseAsync();
+                }
+
+
+                MessageBox.Show($"Siz {summa} so'mlik maxsulot xarid qildingiz. Buyurtmangiz tayyorlanmoqda!");
+                stpOrders.Children.Clear();
+                lbstolDrid.Content = "";
+                ischeck = true;
+
+                await _tableRepository.UpdatedFalseAsync(name);
+
+                StolPage stolPage = new StolPage(this);
+                PageNavigator.Content = stolPage;
+
+                list.Clear();
+                ord.Clear();
             }
-            finally
-            {
-                await _connection.CloseAsync();
-            }
-
-
-            MessageBox.Show($"Siz {summa} so'mlik maxsulot xarid qildingiz. Buyurtmangiz tayyorlanmoqda!");
-            stpOrders.Children.Clear();
-            lbstolDrid.Content = "";
-            ischeck = true;
-
-            await _tableRepository.UpdatedFalseAsync(name);
-            
-            StolPage stolPage = new StolPage(this);
-            
-            PageNavigator.Content = stolPage;
 
         }
         else
@@ -195,8 +213,10 @@ public partial class MainWindow : Window
 
     public void btnBekor_qilish(object sender, RoutedEventArgs e)
     {
+        summa = 0;
         list.Clear();
         stpOrders.Children.Clear();
+        ord.Clear();
         lbstolDrid.Content = "";
         StolPage stolPage = new StolPage(this);
         PageNavigator.Content = stolPage;
