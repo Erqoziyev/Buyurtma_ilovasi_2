@@ -8,8 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Security\" />
-    <Folder Include="Windows\" />
+    <Compile Remove="Security\**" />
+    <Compile Remove="Windows\**" />
+    <EmbeddedResource Remove="Security\**" />
+    <EmbeddedResource Remove="Windows\**" />
+    <None Remove="Security\**" />
+    <None Remove="Windows\**" />
+    <Page Remove="Security\**" />
+    <Page Remove="Windows\**" />
   </ItemGroup>
 
   <ItemGroup>
