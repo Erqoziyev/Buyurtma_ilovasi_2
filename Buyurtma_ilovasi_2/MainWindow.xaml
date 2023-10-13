@@ -175,47 +175,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             />
-                        <!--<DataGrid
-                            x:Name="DtgMaxsulot"
-                            AutoGenerateColumns="True"
-                            Grid.Row="1"
-                            Style="{DynamicResource DataGridStyle1}" 
-                            CellStyle="{DynamicResource DataGridCellStyle1}" 
-                            RowStyle="{DynamicResource DataGridRowStyle2}" 
-                            Background="Transparent"
-                            BorderThickness="0 2 0 2"
-                            BorderBrush="{DynamicResource ThreedColor}">
-
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Taom nomi" 
-                                                    Binding="{Binding TaomNomi}" 
-                                                    IsReadOnly="True"
-                                                    CanUserResize="False" 
-                                                    Width="*"/>
-                                <DataGridTextColumn Header="Soni" 
-                                                    Binding="{Binding Soni}" 
-                                                    IsReadOnly="True"
-                                                    CanUserResize="False" 
-                                                    Width="*"/>
-                                <DataGridTextColumn Header="Narxi"
-                                                    Binding="{Binding Narxi}" 
-                                                    IsReadOnly="True" 
-                                                    CanUserResize="False"
-                                                    Width="*"/>
-                                <DataGridTemplateColumn Header="      X" IsReadOnly="True" CanUserResize="False" Width="70">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button
-                                                x:Name="btnDelete"
-                                                Style="{DynamicResource gridEditButton}"
-                                                Click="btnDelete">
-                                                <Icon:PackIconMaterial Kind="DeleteOutline" Style="{DynamicResource btnDeleteIcon}"/>
-                                            </Button>
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>-->
                         <Grid
                             Margin="5 0 19 0"
                             Grid.Row="1">

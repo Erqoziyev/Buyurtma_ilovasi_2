@@ -3,28 +3,14 @@ using Buyurtma_ilovasi_2.Constans;
 using Buyurtma_ilovasi_2.Entities.orders;
 using Buyurtma_ilovasi_2.Interface.orders;
 using Buyurtma_ilovasi_2.Pages;
-using Buyurtma_ilovasi_2.Repositories;
 using Buyurtma_ilovasi_2.Repositories.Orders;
 using Buyurtma_ilovasi_2.Repositories.Tables;
 using Npgsql;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.Common;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static Buyurtma_ilovasi_2.Components.MealAddUserControl;
 
 namespace Buyurtma_ilovasi_2;
 
@@ -146,7 +132,7 @@ public partial class MainWindow : Window
                 {
                     summa += obj.food_price;
                 }
-                
+
                 MessageBox.Show($"Siz {summa} so'mlik xarid amalda oshirdingiz. Buyurtmangiz olib ketish uchun tayyorlanmoqda. Iltimos hisobni to'lang va biroz kuting");
                 PeymentPage peymentPage = new PeymentPage();
                 peymentPage.summa = summa;
@@ -164,7 +150,7 @@ public partial class MainWindow : Window
                         obj.table_name = name;
                         string query = "INSERT INTO public.orders(table_name, food_name, food_count, food_price)" +
                                       "VALUES (@table_name, @food_name, @food_count, @food_price);";
-                        
+
                         await using (var command = new NpgsqlCommand(query, _connection))
                         {
                             command.Parameters.AddWithValue("table_name", obj.table_name);
@@ -222,12 +208,6 @@ public partial class MainWindow : Window
         PageNavigator.Content = stolPage;
     }
 
-
-    private void Load(object sender, RoutedEventArgs e)
-    {
-
-    }
-
     public async Task RefreshAsync(Order order)
     {
         ord.Add(order);
@@ -236,14 +216,14 @@ public partial class MainWindow : Window
         orderedMealUserControl.DeleteOrder = RemoveOrder;
         list.Add(orderedMealUserControl);
         stpOrders.Children.Add(orderedMealUserControl);
-        
+
     }
 
 
 
     public void RemoveOrder(Order orders)
     {
-        for(int i=0; i<list.Count; i++)
+        for (int i = 0; i < list.Count; i++)
         {
             if (list[i].lblName.Content.ToString() == orders.food_name)
             {
@@ -252,5 +232,10 @@ public partial class MainWindow : Window
                 DeleteOrders(list[i].lblName.Content.ToString());
             }
         }
+    }
+
+    private void Load(object sender, RoutedEventArgs e)
+    {
+
     }
 }

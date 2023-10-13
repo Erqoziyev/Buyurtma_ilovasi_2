@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Buyurtma_ilovasi_2.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="40" >
+             Height="40" >
     <Border
         CornerRadius="5"
         Margin="0 2"
